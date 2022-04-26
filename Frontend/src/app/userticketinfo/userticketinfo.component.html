@@ -1,0 +1,233 @@
+<!-- 
+<!DOCTYPE html>
+<html>
+    <app-navbaruser></app-navbaruser>
+  <body style="background-color: rgb(12, 44, 28); height: 540px; margin-top: -20px;">
+<div class="container">
+  <h2 style="text-align: center; font:bold ; background-color: rgb(21, 55, 83); color: coral; margin-top: 20px;">Your Booking Info</h2>
+ <div style="margin-left: -70px;">
+  <table class="table table-striped" style="background-color: rgb(127, 173, 150);">
+      <thead style="color: darkolivegreen; background-color: lightblue;">
+          <tr>
+        
+              <th>Name</th>
+              <th>Contact</th>
+              <th>E-mail</th>
+              <th>Train No</th>
+              <th>Train Name</th>
+              <th>Train From</th>
+              <th>Train To</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Fare</th> 
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let bk of bookings">
+            
+            <td>{{bk.name}}</td>
+            <td>{{bk.phnnumber}}</td>
+            <td>{{bk.email}}</td>
+            <td>{{bk.trainNo}}</td>
+            <td>{{bk.trainName}}</td>
+            <td>{{bk.trainFrom}}</td>
+            <td>{{bk.trainTo}}</td>
+            <td>{{bk.date}}</td>
+            <td>{{bk.time}}</td>
+            <td>{{bk.fare}}</td>
+        <td>
+          <button onclick="window.location.href='https://paytm.me/4dsg-0z'" class="btn btn-info">Pay Now</button>
+        </tr>
+      </tbody>
+  </table>
+  </div>
+  </div>
+
+</body>
+  </html> -->
+
+
+  <!-- <!DOCTYPE html>
+<html>
+    <app-navbaruser></app-navbaruser>
+  <body style="background-color: rgb(205, 236, 235);">
+<div class="container" style=" padding-top: 20px;">
+  <div class="card" style="width: 28rem;margin: auto; margin-top: 20px;">
+    <div class="card-header">
+        Your Booking Info
+      </div>                                                                                                                    
+    <div class="card-body">
+      <label>Name:</label><b>{{bookings[0].name}}</b><br>
+      <label>Contact:</label><b>{{bookings[0].phnnumber}}</b><br>
+      <label>E-mail:</label><b>{{bookings[0].email}}</b><br>
+      <label>Train No:</label><b>{{bookings[0].trainNo}}</b><br>
+      <label>Train Name:</label><b>{{bookings[0].trainName}}</b><br>
+      <label>Train From:</label><b>{{bookings[0].trainFrom}}</b><br>
+      <label>Train To:</label><b>{{bookings[0].trainTo}}</b><br>
+      <label>Date:</label><b>{{bookings[0].date}}</b><br>
+      <label>Time:</label><b>{{bookings[0].time}}</b><br>
+      <label>Fare:</label><b>{{bookings[0].fare}}</b><br>
+      <div style="margin: auto;">
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+        <button onclick="window.location.href='https://paytm.me/4dsg-0z'" class="btn btn-info">Pay Now</button>
+
+      </div>
+  </div>
+  </div>
+
+</body>
+  </html> -->
+
+
+  <!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<app-navbaruser></app-navbaruser>
+
+<body style="background-color: rgb(12, 44, 28);">
+    <div class="container" style=" padding-top: 20px;">
+        <div class="card" style="width: 28rem;margin: auto;padding-top: 1rems;">
+            <div class="card-header">
+                <div class="d-flex justify-content-center">Your Booking Info</div>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-sm">
+                            :
+                        </div>
+                        <div class="col-sm">
+                            <b>{{bookings[length].name}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>Contact</label>
+                        </div>
+                        <div class="col-sm">
+                            :
+                        </div>
+                        <div class="col-sm">
+                            <b>{{bookings[length].phnnumber}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>E-mail</label>
+                        </div>
+                        <div class="col-sm">
+                            :
+                        </div>
+                        <div class="col-sm">
+                            <b>{{bookings[length].email}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>Train No</label>
+                        </div>
+                        <div class="col-sm">
+                            :
+                        </div>
+                        <div class="col-sm">
+                            <b>{{bookings[length].trainNo}}</b><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>Train Name</label>
+                        </div>
+                        <div class="col-sm">
+                            :
+                        </div>
+                        <div class="col-sm">
+                            <b>{{bookings[length].trainName}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>Train From</label>
+                        </div>
+                        <div class="col-sm">
+                            :
+                        </div>
+                        <div class="col-sm">
+                            <b>{{bookings[length].trainFrom}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>Train To</label>
+                        </div>
+                        <div class="col-sm">
+                            :
+                        </div>
+                        <div class="col-sm">
+                            <b>{{bookings[length].trainTo}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>Date</label>
+                        </div>
+                        <div class="col-sm">
+                            :
+                        </div>
+                        <div class="col-sm">
+                            <b>{{bookings[length].date}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>Time</label>
+                        </div>
+                        <div class="col-sm">
+                            :
+                        </div>
+                        <div class="col-sm">
+                            <b>{{bookings[length].time}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>Fare</label>
+                        </div>
+                        <div class="col-sm">
+                            :
+                        </div>
+                        <div class="col-sm">
+                            <b>{{bookings[length].fare}}</b>
+                        </div>
+                    </div>                   
+                </div>
+
+            </div>
+            <div class="card-footer text-muted">
+                <div class="d-flex justify-content-center">
+                    <button onclick="window.location.href='https://paytm.me/4dsg-0z'" class="btn btn-info">Pay
+                        Now</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

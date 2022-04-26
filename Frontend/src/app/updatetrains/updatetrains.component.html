@@ -1,0 +1,74 @@
+<app-navbaradmin></app-navbaradmin>
+
+<body style="background-color: rgb(12, 44, 28); height: 821px; margin-top: -20px;">
+<div style="text-align: center">
+    <h3>{{message}}</h3>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12" style="margin-top: 20px;">
+            <h2 class = "mt-3 mb-3"><b style="border-color: cyan; color:rgb(158, 51, 158);">Update Trains Here:</b></h2>
+            <form #trainForm="ngForm">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label for="trainNo">Train No</label>
+                        <input #trainNo="ngModel" [class.is-invalid]="trainNo.invalid && trainNo.touched" class="form-control" type="text" [(ngModel)]="train.trainNo" name="trainNo" id="trainNo" required
+                            placeholder="Enter Train No" />
+                            <small class="text-danger" [class.d-none]="trainNo.valid || trainNo.untouched">*Train No. is required</small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="trainName">Train Name</label>
+                        <input #trainName="ngModel" [class.is-invalid]="trainName.invalid && trainName.touched" required type="text" [(ngModel)]="train.trainName" name="trainName" id="trainName"
+                            class="form-control phone" maxlength="28" placeholder="Enter Train Name" />
+                            <small class="text-danger" [class.d-none]="trainName.valid || trainName.untouched">*Train Name. is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trainFrom">Source</label>
+                        <input #trainFrom="ngModel" [class.is-invalid]="trainFrom.invalid && trainFrom.touched" class="form-control" type="text" [(ngModel)]="train.trainFrom" name="trainFrom" id="txt"
+                            placeholder="Enter Source" required />
+                        <div id="errLast"></div>
+                        <small class="text-danger" [class.d-none]="trainFrom.valid || trainFrom.untouched">*Train Source is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trainTo">Destination</label>
+                        <input #trainTo="ngModel" [class.is-invalid]="trainTo.invalid && trainTo.touched" class="form-control" required type="text" [(ngModel)]="train.trainTo" name="trainTo"
+                            id="trainTo" placeholder="Enter Destination" />
+                            <small class="text-danger" [class.d-none]="trainTo.valid || trainTo.untouched">*Train Destination is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fare">Fare</label>
+                        <input #fare="ngModel" [class.is-invalid]="fare.invalid && fare.touched" class="form-control" required type="text" [(ngModel)]="train.fare" name="fare"
+                            id="fare" placeholder="Enter Fare" />
+                            <small class="text-danger" [class.d-none]="fare.valid || fare.untouched">*Fare is required</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="seats">Seats</label>
+                        <input #seats="ngModel" [class.is-invalid]="seats.invalid && seats.touched" class="form-control" required type="text" [(ngModel)]="train.seats" name="seats"
+                            id="seats" placeholder="No.of Seats" />
+                            <small class="text-danger" [class.d-none]="seats.valid || seats.untouched">*Seats is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input #time="ngModel" [class.is-invalid]="time.invalid && time.touched" class="form-control" required type="text" [(ngModel)]="train.time" name="time"
+                            id="time" placeholder="Enter Time" />
+                            <small class="text-danger" [class.d-none]="time.valid || time.untouched">*Train time is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <input [disabled]="trainForm.form.invalid" class="btn btn-success" type="submit" name="submit_reg" value="Update Train" (click)="updateTrain()">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>

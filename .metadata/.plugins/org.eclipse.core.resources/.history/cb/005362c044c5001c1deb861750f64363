@@ -1,0 +1,6 @@
+
+spring.data.mongodb.uri=mongodb+srv://Kd:abcd@mongo-practice.lo8fv.mongodb.net/ticketsdb?retryWrites=true&w=majority
+
+server.port=8086
+spring.application.name=BookingDetails
+

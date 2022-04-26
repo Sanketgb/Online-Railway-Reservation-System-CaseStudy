@@ -1,0 +1,5 @@
+
+spring.data.mongodb.uri=mongodb+srv://Kd:abcd@mongo-practice.lo8fv.mongodb.net/traindb?retryWrites=true&w=majority
+
+server.port=8087
+spring.application.name=TrainDetails

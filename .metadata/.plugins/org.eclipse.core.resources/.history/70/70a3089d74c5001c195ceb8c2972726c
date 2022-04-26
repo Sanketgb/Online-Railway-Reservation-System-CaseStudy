@@ -1,0 +1,5 @@
+package com.casestudy.util;
+
+public class JwtUtil {
+
+}

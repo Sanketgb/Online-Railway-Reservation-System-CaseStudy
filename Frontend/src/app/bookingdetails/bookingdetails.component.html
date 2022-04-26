@@ -1,0 +1,116 @@
+<!-- <!DOCTYPE html>
+<html>
+    <app-navbaruser></app-navbaruser>
+  <body style="background-color: rgb(12, 44, 28); height: 540px; margin-top: -20px;">
+<div class="container">
+  <h2 style="text-align: center; font:bold ; background-color: rgb(21, 55, 83); color: coral; margin-top: 20px;">List of Your Bookings</h2>
+ <div style="margin-left: -70px;">
+  <table class="table table-striped" style="background-color: rgb(127, 173, 150);">
+      <thead style="color: darkolivegreen; background-color: lightblue;">
+          <tr>
+              <th>PNR-ID</th>
+              
+              <th>Name</th>
+              <th>Contact</th>
+              <th>E-mail</th>
+              <th>Train No</th>
+              <th>Train Name</th>
+              <th>Train From</th>
+              <th>Train To</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Fare</th> 
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let bk of bookings">
+            <td>{{bk.pnrId}}</td>
+            
+            <td>{{bk.name}}</td>
+            <td>{{bk.phnnumber}}</td>
+            <td>{{bk.email}}</td>
+            <td>{{bk.trainNo}}</td>
+            <td>{{bk.trainName}}</td>
+            <td>{{bk.trainFrom}}</td>
+            <td>{{bk.trainTo}}</td>
+            <td>{{bk.date}}</td>
+            <td>{{bk.time}}</td>
+            <td>{{bk.fare}}</td>
+        <td>
+          <button (click)="cancelTicket(bk.pnrId)" class="btn btn-info">Cancel Ticket</button>
+        </tr>
+      </tbody>
+  </table>
+  </div>
+  </div>
+
+</body>
+  </html> -->
+
+  <app-navbaruser></app-navbaruser>
+  <p-card  style="background-color: lightblue;">
+    <!-- <p-panel>
+        <ng-template pTemplate="header">
+            <span style="font-size: 20px; font-weight: '500';">Search Trains</span>
+        </ng-template>
+        <ng-template pTemplate="icons">
+            <button pButton class="p-panel-header-icon p-link" (click)="backNavigation()">
+                <span style="font-weight: bolder;font-size: 23px;color: blue;" class="pi pi-arrow-left"></span>
+            </button>
+        </ng-template>
+            <div class="container p-fluid">
+            <div class=" row">
+                <div class="col-lg-4 col-sm-12 mt-5">
+                    <label>Source
+                    </label><br>
+                    <input type="text" pInputText />
+                </div>
+                <div class="col-lg-4 col-sm-12 mt-5"><label>Destination
+                    </label><br> <input type="text" pInputText /></div>
+                    <div class="col-lg-2 col-sm-12 mt-4">
+                        <p-button label="Search" icon="pi pi-search" iconPos="left"></p-button>
+                        </div>
+            </div>
+                   </div>
+
+    </p-panel> -->
+    
+    
+        <p-table [value]="bookings" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr>
+                  <th>PNR-ID</th>
+                  <th>Name</th>
+                  <th>Contact</th>
+                  <th>E-mail</th>
+                  <th>Train No</th>
+                  <th>Train Name</th>
+                  <th>Train From</th>
+                  <th>Train To</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Fare</th> 
+                  <th>Actions</th>     
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-bk>
+                <tr>
+                  <td>{{bk.pnrId}}</td>
+                  <td>{{bk.name}}</td>
+                  <td>{{bk.phnnumber}}</td>
+                  <td>{{bk.email}}</td>
+                  <td>{{bk.trainNo}}</td>
+                  <td>{{bk.trainName}}</td>
+                  <td>{{bk.trainFrom}}</td>
+                  <td>{{bk.trainTo}}</td>
+                  <td>{{bk.date}}</td>
+                  <td>{{bk.time}}</td>
+                  <td>{{bk.fare}}</td>
+                  <td>
+                    <button (click)="cancelTicket(bk.pnrId)" class="btn btn-info">Cancel Ticket</button>
+                  </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-card>
