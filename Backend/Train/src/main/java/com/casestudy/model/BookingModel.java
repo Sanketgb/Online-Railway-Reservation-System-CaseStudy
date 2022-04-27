@@ -19,10 +19,10 @@ public class BookingModel {
 	private String date;
 	private int totalseats;
 	
+	
 	public BookingModel() {
 		super();
 	}
-	
 	
 	public BookingModel(String userId, String name, String phnnumber, String email, String trainNo, String trainName,
 			String from, String to, String date, int totalseats) {

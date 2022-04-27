@@ -43,23 +43,27 @@ public class AdminController {
 		
 //--------------------------------------Admin-CRUD-----------------------------------------
 		
+		//Rest API to add Admin details
 		@PostMapping("/registeradmin")
 		public String addadmin(@RequestBody AdminModel admin) {
 			adminrepo.save(admin);
 			return "Admin with Id: "+admin.getId()+" have been Registered Successfully";
 		}
 		
+		//Rest API to get Admin details by Id
 		@GetMapping("/viewadminprofile/{id}")
 		public Optional<AdminModel> getadmin(@PathVariable("id") String id){
 			return adminrepo.findById(id);
 		}
-
+		
+		//Rest API to update Admin details by Id
 		@PutMapping("/updateprofile/{id}")
 		public String updateadmin(@PathVariable("id") String id, @RequestBody AdminModel adminmodel) {
 			adminrepo.save(adminmodel);
 			return "Admin with id "+id+" have been updated successfully";
 		}
 		
+		//Rest API to delete Admin details by Id
 		@DeleteMapping("/deleteadmin/{id}")
 		public String deleteadmin(@PathVariable String id) {
 			adminrepo.deleteById(id);
@@ -68,23 +72,27 @@ public class AdminController {
 		
 //---------------------------------------Admin-User----------------------------------------------------
 		
+	    //Rest API to get all User details 
 		@GetMapping("/viewallusers")
 		public List<UserModel>getallusers() {
 			return Arrays.asList(restTemplate.getForObject("http://UserDetails/user/viewallusers",UserModel[].class));
 		}
 		
+		//Rest API to get User details by Id
 		@GetMapping("/viewuser/{id}")
 		public List<UserModel> getuser(@PathVariable("id") String id)
 		{
 			return Arrays.asList(restTemplate.getForObject("http://UserDetails/user/viewuser/"+id,UserModel[].class));	
 		}
 		
+		//Rest API to update User details by Id
 		@PutMapping("/updateuser/{id}")
 		public String updateuser(@RequestBody UserModel usermodel, @PathVariable("id") String id) {
 			this.restTemplate.put("http://UserDetails/user/updateprofile/{id}",id,usermodel);
 			return "User with id : "+id+" have been updated";
 		}
 	
+		//Rest API to delete User details by Id
 		@DeleteMapping("/deleteuser/{id}")
 		public String deleteuser(@PathVariable String id) {
 			this.restTemplate.delete("http://UserDetails/user/deleteprofile/{id}",id);
@@ -93,36 +101,42 @@ public class AdminController {
 		
 //--------------------------------------Admin-Train---------------------------------------------
 		
+	   //Rest API to add Train details
 		@PostMapping("/addtrain")
 		public String addtrain(@RequestBody TrainModel trainmodel) {
 			this.restTemplate.postForObject("http://TrainDetails/train/addtrain", trainmodel, TrainModel.class);
 			return "Train with No: "+trainmodel.getTrainNo()+" have been added Successfully";
 		}
 		
+	    //Rest API to get all Train details 
 		@GetMapping("/viewalltrains")
 		public List<TrainModel> getAllTrains()
 		{
 			return Arrays.asList(restTemplate.getForObject("http://TrainDetails/train/viewalltrains",TrainModel[].class));
 		}
 
+		//Rest API to get User Train by Id
 		@GetMapping("/viewtrainbyno/{trainNo}")
 		public TrainModel getTrains(@PathVariable("trainNo") String trainNo)
 		{
 			return restTemplate.getForObject("http://TrainDetails/train/viewtrainbyno/"+trainNo,TrainModel.class);	
 		}
 		
+		//Rest API to get User details by Name
 		@GetMapping("/viewtrainbyname/{trainName}")
 		public TrainModel getTrainsbyname(@PathVariable("trainName") String trainName)
 		{
 			return restTemplate.getForObject("http://TrainDetails/train/viewtrainbyname/"+trainName,TrainModel.class);	
 		}
 		
+		//Rest API to update Train details by Id
 		@PutMapping("/updatetrain/{trainNo}")
 		public String updatetrain(@RequestBody TrainModel trainmodel, @PathVariable String trainNo) {
 			this.restTemplate.put("http://TrainDetails/train/updatetrain/{trainNo}",trainmodel,trainNo,TrainModel.class);
 			return "Train with no. : "+trainNo+" have been updated";
 		}
 	
+		//Rest API to delete User details by Id
 		@DeleteMapping("/deletetrain/{trainNo}")
 		public String deletetrain(@PathVariable String trainNo) {
 			this.restTemplate.delete("http://TrainDetails/train/deletetrain/"+trainNo,TrainModel.class);

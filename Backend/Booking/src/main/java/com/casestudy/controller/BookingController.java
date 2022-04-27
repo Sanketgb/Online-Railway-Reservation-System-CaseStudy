@@ -24,7 +24,7 @@ public class BookingController {
 	@Autowired
 	private BookingRepository bookingrepo;
 	
-	
+	//Rest API to add Booking details by Id & fare
 	@PostMapping("/bookticket/{userId}/{fare}")
 	public int bookticket(@PathVariable String userId, @PathVariable int fare, @RequestBody BookingModel book)
 	{
@@ -45,40 +45,30 @@ public class BookingController {
 		else {
 			return 0;
 		}
-		
-		//return book.getTotalseats();
 	}
 	
-//	@GetMapping("/getorder/{userId}")
-//	public List<BookingModel> getorder(@PathVariable String userId)
-//	{
-//		return bookingrepo.findByUserId(userId);
-//	}
-	
+	//Rest API to get all Booking details
 	@GetMapping("/getallorders")
 	public List<BookingModel> getAllOrders()
 	{
 		return bookingrepo.findAll();
 	}
 	
+	//Rest API to get Booking by Id
 	@GetMapping("/getorder/{userId}")
 	public List<BookingModel> getorder(@PathVariable String userId)
 	{
 		return bookingrepo.findByUserId(userId);
 	}
 	
+	//Rest API to get Booking bt pnrId
 	@GetMapping("/getorderpnr/{pnrId}")
 	public BookingModel getorderpnr(@PathVariable String pnrId)
 	{
 		return bookingrepo.findByPnrId(pnrId);
 	}
 	
-//	@PutMapping("/updateorder/{pnrId}")
-//	public String updateorder(@PathVariable("pnrId") String pnrId, @RequestBody BookingModel book) {
-//		bookingrepo.save(book);
-//		return "Train with no. "+pnrId+" havebeen updated successfully";
-//	}
-	
+	//Rest API to delete Booking details by Id
 	@DeleteMapping("/cancelticket/{pnrId}")
 	public String cancelticket(@PathVariable String pnrId)
 	{

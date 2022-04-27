@@ -45,7 +45,7 @@ public class AuthController {
 	@Autowired
 	RestTemplate restTemplate;
 	
-	
+	//Rest API to Register as User 
 	@PostMapping("/register")
 	private ResponseEntity<AuthenticationResponse>registerClientToken(@RequestBody AuthenticationRequest authrequest){
 
@@ -57,6 +57,7 @@ public class AuthController {
 		System.out.println(usermodellist);
 		System.out.println(usermodel.getUsername());
 		int count = 0;
+		
 		for(int i=0;i<usermodellist.size();i++)
 		{
 			System.out.println(usermodellist.get(i).getUsername());
@@ -64,7 +65,6 @@ public class AuthController {
 				count++;
 				break;
 			}
-				
 		}
 		
 		 if (count==0) {
@@ -72,17 +72,15 @@ public class AuthController {
 		        return new ResponseEntity<AuthenticationResponse>(new AuthenticationResponse
 				   (authrequest.getUsername()+" registered Successfully ","1"), HttpStatus.OK);
 	     }
-		 
 	     else {
 				System.out.println("Invalid Credentials");
 				return new ResponseEntity<AuthenticationResponse>(new AuthenticationResponse
 					("Registration Failed","0") , HttpStatus.OK);
 		 }
-     
     }
      
 	
-	
+	//Rest API to Authenticate as User
 	@PostMapping("/authenticate")
 	private ResponseEntity<?> authenticateClientToken(@RequestBody AuthenticationRequest authrequest) throws Exception{
 
@@ -103,6 +101,7 @@ public class AuthController {
 		return ResponseEntity.ok(new AuthenticationResponse(jwt ,success));
 	}
 	
+	//Rest API to get all User details
 	@GetMapping("/viewprofile")
 	public List<UserModel> getuser(){
 		return userrepo.findAll();
@@ -112,7 +111,6 @@ public class AuthController {
 	public String firstPage() {
 		return "Hello World";
 	}
-	
 	
 	@PostMapping("/reg")
 	public String adduser(@RequestBody UserModel usermodel) {

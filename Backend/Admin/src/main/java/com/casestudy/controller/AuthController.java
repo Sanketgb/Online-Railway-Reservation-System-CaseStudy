@@ -38,6 +38,8 @@ public class AuthController {
 	@Autowired
 	JwtUtil jwtutil;
 	
+	
+    //Rest API to add/Register as Admin details
 	@PostMapping("/register")
 	private ResponseEntity<AuthenticationResponse> registerClientToken(@RequestBody AuthenticationRequest authrequest){
 
@@ -58,14 +60,13 @@ public class AuthController {
 				(authrequest.getUsername()+" registered Successfully "), HttpStatus.OK);
 	}
 	
-	
+	//Rest API to authenticate Admin details
 	@PostMapping("/authenticate")
 	private ResponseEntity<?> authenticateClientToken(@RequestBody AuthenticationRequest authrequest) throws Exception{
 
 		try {
 			authenticationmanager.authenticate(new UsernamePasswordAuthenticationToken(authrequest.getUsername(), authrequest.getPassword()));
 		}
-		
 		catch(Exception e) {
 			return ResponseEntity.ok(new AuthenticationResponse("no"));
 		}
@@ -76,6 +77,10 @@ public class AuthController {
 		
 		return ResponseEntity.ok(new AuthenticationResponse(jwt));
 	}
+	
+	
+	
+	
 	
 	@GetMapping("/hello")
 	public String firstPage() {

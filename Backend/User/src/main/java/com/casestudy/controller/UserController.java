@@ -38,25 +38,27 @@ public class UserController {
 		
 //--------------------------------------User-CRUD-----------------------------------------
 		
-		
+		//Rest API to get User details by Id
 		@GetMapping("/viewuserprofile/{id}")
 		public Optional<UserModel> getuser(@PathVariable("id") String id){
 			return userrepo.findById(id);
 		}
 
+		//Rest API to update User details by Id
 		@RequestMapping(value="/updateprofile/{id}", method=RequestMethod.PUT)
 		public String update(@PathVariable("id") String id, @RequestBody UserModel usermodel) {
 			userrepo.save(usermodel);
 			return "Updated";
 		}
 	
+		//Rest API to delete User profile by Id
 		@DeleteMapping("/deleteprofile/{id}")
 		public String delete(@PathVariable String id) {
 			userrepo.deleteById(id);
 			return "User with id "+id+" have been deleted";
 		}
 		
-		//checking
+		//Rest API to get all User Details
 		@GetMapping("/viewallusers")
 		public List<UserModel>getuser(){
 			return userrepo.findAll();
@@ -64,42 +66,49 @@ public class UserController {
 		
 //---------------------------------------User-Train---------------------------------------------
 		
+		//Rest API to get all Train Details
 		@GetMapping("/viewalltrains")
 		public List<TrainModel> getAllTrains()
 		{
 			return Arrays.asList(restTemplate.getForObject("http://TrainDetails/train/viewalltrains",TrainModel[].class));
 		}
 
+		//Rest API to get Train Details by Id
 		@GetMapping("/viewtrain/{trainNo}")
 		public TrainModel getTrains(@PathVariable("trainNo") String trainNo)
 		{
 			return restTemplate.getForObject("http://TrainDetails/train/viewtrainbyno/"+trainNo,TrainModel.class);	
 		}
 		
+		//Rest API to get Train details from source to destination
 		@GetMapping("/findbw/{trainFrom}/{trainTo}")
 		public TrainModel findByloc(@PathVariable("trainFrom") String trainFrom, @PathVariable("trainTo") String trainTo)
 		{
 			return this.restTemplate.getForObject("http://TrainDetails/train/findbw/"+trainFrom+"/"+trainTo,TrainModel.class);
 		}
 		
+		//Rest API to get Train fare by Id
 		@GetMapping("/findfareno/{trainNo}")
 		public int findfare(@PathVariable("trainNo") String trainNo)
 		{
 			return restTemplate.getForObject("http://TrainDetails/train/findfarebyno/"+trainNo,Integer.class);
 		}
 		
+		//Rest API to get Train fare by Name
 		@GetMapping("/findfarename/{trainName}")
 		public int findfarebyname(@PathVariable("trainName") String trainName)
 		{
 			return restTemplate.getForObject("http://TrainDetails/train/findfarebyname/"+trainName,Integer.class);
 		}
 		
+		//Rest API to get Train time by Id
 		@GetMapping("/findtimeno/{trainNo}")
 		public String findtime(@PathVariable("trainNo") String trainNo)
 		{
 			return restTemplate.getForObject("http://TrainDetails/train/findtimebyno/"+trainNo,String.class);
 		}
 		
+		//Rset API to get Train time by Name
 		@GetMapping("/findtimename/{trainName}")
 		public String findtimebyname(@PathVariable("trainName") String trainName)
 		{
@@ -108,6 +117,7 @@ public class UserController {
 
 //-----------------------------------User-Ticket-------------------------------------------------
 		
+		//Rset API to add Booking details 
 		@PostMapping("/bookticket")
 		public String bookticket(@RequestBody BookingModel book)
 		{
@@ -119,6 +129,7 @@ public class UserController {
             String username = userDetails.getUsername();
 			int seats = restTemplate.postForObject("http://BookingDetails/booking/bookticket/"+username+"/"+fare, book, Integer.class);
 //			return seats+"";
+			
 			if(seats>0)
 			{
 			restTemplate.postForObject("http://TrainDetails/train/decreaseseat/"+book.getTrainNo()+"/"+seats,book, BookingModel.class);
@@ -127,10 +138,11 @@ public class UserController {
 			else
 			{
 				return "Limit Reached";
-		}
-	
+		    }
+			
 		}
 		
+		//Rest API to delete Booking by pnrId
 		@DeleteMapping("/cancelticket/{pnrId}")
 		public String cancelticket(@PathVariable String pnrId)
 		{
@@ -144,18 +156,21 @@ public class UserController {
 		
 		
 		//UNNECESSARY
+		//Rest API to get all Bookings
 		@GetMapping("/getallorders")
 		public List<BookingModel> getAllOrder()
 		{
 			return Arrays.asList(restTemplate.getForObject("http://BookingDetails/booking/getallorders",BookingModel[].class));
 		}
 		
+		//Rest API to get Bookings by User Id
 		@GetMapping("/getorder/{userId}")
 		public List<BookingModel> getorder(@PathVariable("userId") String userId)
 		{
 			return Arrays.asList(restTemplate.getForObject("http://BookingDetails/booking/getorder/"+userId,BookingModel[].class));
 		}
 		
+		//Rest API to update Booking details for User By User Id
 		@PutMapping("/updateorder/{userId}")
 		public String updateorder(@PathVariable String userId, @RequestBody BookingModel book) {
 			restTemplate.put("http://BookingDetails/booking/updateorder/{userId}",userId,book);

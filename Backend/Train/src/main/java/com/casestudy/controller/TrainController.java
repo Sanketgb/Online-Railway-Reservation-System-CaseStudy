@@ -18,7 +18,6 @@ import com.casestudy.model.BookingModel;
 import com.casestudy.model.TrainModel;
 import com.casestudy.repository.TrainRepository;
 
-
 @Transactional
 @RestController
 @CrossOrigin(origins="*")
@@ -28,38 +27,43 @@ public class TrainController {
 	@Autowired
 	TrainRepository trainrepo;
 	
+	//Rest API to add Train details
 	@PostMapping("/addtrain")
 	public void addtrain(@RequestBody TrainModel trainmodel) {
 		trainrepo.save(trainmodel);
 		
 	}
 	
+	//Rest API to get all Train details
 	@GetMapping("/viewalltrains")
 	public List<TrainModel> getAllTrains()
 	{
 		return trainrepo.findAll();
 	}
 
+	//Rest API to get Train details by Id
 	@GetMapping("/viewtrainbyno/{trainNo}")
 	public TrainModel getTrains(@PathVariable("trainNo") String trainNo)
 	{
 		return trainrepo.findByTrainNo(trainNo);		
 	}
 	
+	//Rest API to get Train details by Name
 	@GetMapping("/viewtrainbyname/{trainName}")
 	public List<TrainModel> getTrainsbyname(@PathVariable("trainName") String trainName)
 	{
 		return trainrepo.findByTrainName(trainName);		
 	}
 	
+	//Rest API to update Train details by Id
 	@RequestMapping(value="/updatetrain/{trainNo}", method=RequestMethod.PUT)
 	public String update(@PathVariable("trainNo") String trainNo, @RequestBody TrainModel trainmodel) {
 		trainrepo.save(trainmodel);
 		return "Train with no. "+trainNo+" havebeen updated successfully";
 	}
 	
+	//Rest API to delete Train details by Id
 	@DeleteMapping("/deletetrain/{trainNo}")
-	
 	public void delete(@PathVariable String trainNo)
 	{
 		TrainModel obj = new TrainModel();
@@ -67,36 +71,35 @@ public class TrainController {
 		trainrepo.delete(obj);
 	}
 	
+	//Rest API to get Train details from a particular source to destination
 	@GetMapping("/findbw/{trainFrom}/{trainTo}")
 	public List<TrainModel> findByloc(@PathVariable("trainFrom") String trainFrom, @PathVariable("trainTo") String trainTo)
 	{
 		return trainrepo.findByTrainFromAndTrainTo(trainFrom,trainTo);
 	}
 	
+	//Rest API to get Train details from a particular source
 	@GetMapping("/findfrom/{trainFrom}")
 	public List<TrainModel> findByfrom(@PathVariable("trainFrom") String trainFrom)
 	{
 		return trainrepo.findByTrainFrom(trainFrom);
 	}
 	
+	//Rest API to get Train details to a particular destination
 	@GetMapping("/findto/{trainTo}")
 	public List<TrainModel> findByto(@PathVariable("trainTo") String trainTo)
 	{
 		return trainrepo.findByTrainTo(trainTo);
 	}
 	
-//	@GetMapping("/findfarebyname/{trainName}")
-//	public int findfarebyname(@PathVariable("trainName") String trainName)
-//	{
-//		return trainrepo.findByTrainName(trainName).getFare();
-//	}
-	
+	//Rset API to get Train fare by Train Id 
 	@GetMapping("/findfarebyno/{trainNo}")
 	public int findfare(@PathVariable("trainNo") String trainNo)
 	{
 		return trainrepo.findByTrainNo(trainNo).getFare();
 	}
 	
+	//Rest API to decrease Train Seats by Train Id 
 	@PostMapping("/decreaseseat/{trainNo}/{seats}")
 	public void decreaseseats(@PathVariable("trainNo") String trainNo, @PathVariable("seats") int seats, @RequestBody BookingModel bookmodel)
 	{
@@ -107,6 +110,7 @@ public class TrainController {
 		trainrepo.save(obj);
 	}
 	
+	//Rest API to increase Train Seats by Train Id 
 	@PostMapping("/increaseseat/{trainNo}/{seats}")
 	public void increaseseats(@PathVariable("trainNo") String trainNo, @PathVariable("seats") int seats)
 	{
@@ -117,12 +121,14 @@ public class TrainController {
 		trainrepo.save(obj);
 	}
 	
+	//Rest API to get Train Time by Train Id
 	@GetMapping("/findtimebyno/{trainNo}")
 	public String findtimebyno(@PathVariable("trainNo") String trainNo)
 	{
 		return trainrepo.findByTrainNo(trainNo).getTime();
 	}
 	
+	//Rest API to get Train Time by Train Name
 	@GetMapping("/findtimebyname/{trainName}")
 	public String findtimebyname(@PathVariable("trainName") String trainName)
 	{

@@ -1,0 +1,5 @@
+package com.casestudy.service;
+
+public class UserInfoService {
+
+}

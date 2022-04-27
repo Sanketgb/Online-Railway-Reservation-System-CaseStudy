@@ -26,18 +26,18 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
-<dependency>
-    <groupId>javax.xml.bind</groupId>
-    <artifactId>jaxb-api</artifactId>
-    </dependency>
-	
+		<dependency>
+		    <groupId>javax.xml.bind</groupId>
+		    <artifactId>jaxb-api</artifactId>
+		</dependency>
+			
   <!-- JAXB RI, Jakarta XML Binding -->
- 	 <dependency>
-     	 <groupId>com.sun.xml.bind</groupId>
-     	 <artifactId>jaxb-impl</artifactId>
-     	 <version>3.0.0</version>
-     	 <scope>runtime</scope>
-  </dependency>
+		 <dependency>
+		     	 <groupId>com.sun.xml.bind</groupId>
+		     	 <artifactId>jaxb-impl</artifactId>
+		     	 <version>3.0.0</version>
+		     	 <scope>runtime</scope>
+	    </dependency>
         
         <dependency>
            <groupId>org.glassfish.jaxb</groupId>
@@ -54,7 +54,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-devtools</artifactId>
+	    </dependency>		
 	</dependencies>
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
