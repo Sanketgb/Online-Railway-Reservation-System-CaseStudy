@@ -42,18 +42,10 @@ export class TraindataService {
 public getBookings() {
   return this.http.get("http://localhost:8150/user/getallorders");
 }
-  // public getBookings(username: string | null) {
-  //   console.log("---------"+username);
-  //   return this.http.get("http://localhost:8089/user/getorder/",+username);
-  // }
 
   public deleteTrain(trainNo:any){
     return this.http.delete("http://localhost:8088/admin/deletetrain/"+trainNo);
   }
-
-  // public addNew(train:any) {
-  //   return this.http.post("http://localhost:8087/train/addtrain", train, { responseType: "text" as "json" });
-  // }
 
   addNewTrain(train: Train): Observable<Object> {
     return this.http.post("http://localhost:8088/admin/addtrain", train);

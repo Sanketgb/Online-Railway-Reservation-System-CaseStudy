@@ -3,6 +3,8 @@ package com.casestudy.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,10 +47,19 @@ public class AuthController {
 	@Autowired
 	RestTemplate restTemplate;
 	
+	//Adding Logger 
+	Logger logger = LoggerFactory.getLogger(AuthController.class);
+	
+	
+	
 	//Rest API to Register as User 
 	@PostMapping("/register")
 	private ResponseEntity<AuthenticationResponse>registerClientToken(@RequestBody AuthenticationRequest authrequest){
-
+		
+		//logger implementation
+        logger.info("[register] info message added");
+        logger.debug("[register] debug message added");
+        
 		UserModel usermodel =new UserModel();
 		usermodel.setUsername(authrequest.getUsername());
 		usermodel.setPassword(authrequest.getPassword());
@@ -98,14 +109,31 @@ public class AuthController {
 		String jwt = jwtutil.generateToken(userdetails);
 		String success = "true";
 		
+		//logger implementation
+        logger.info("[authenticate] info message added");
+        logger.debug("[authenticate] debug message added");
+		
 		return ResponseEntity.ok(new AuthenticationResponse(jwt ,success));
 	}
+	
 	
 	//Rest API to get all User details
 	@GetMapping("/viewprofile")
 	public List<UserModel> getuser(){
+		
+		//logger implementation
+        logger.info("[viewprofile] info message added");
+        logger.debug("[viewprofile] debug message added");
+        
 		return userrepo.findAll();
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping("/hello")
 	public String firstPage() {

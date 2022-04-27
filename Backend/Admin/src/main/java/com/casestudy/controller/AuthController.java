@@ -1,5 +1,7 @@
 package com.casestudy.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +40,9 @@ public class AuthController {
 	@Autowired
 	JwtUtil jwtutil;
 	
+	//Adding Logger 
+	Logger logger = LoggerFactory.getLogger(AuthController.class);
+	
 	
     //Rest API to add/Register as Admin details
 	@PostMapping("/register")
@@ -55,6 +60,10 @@ public class AuthController {
 			return new ResponseEntity<AuthenticationResponse>(new AuthenticationResponse
 					("Registration Failed") , HttpStatus.OK);
 		}
+		
+		//logger implementation
+        logger.info("[register] info message added");
+        logger.debug("[register] debug message added");
 		
 		return new ResponseEntity<AuthenticationResponse>(new AuthenticationResponse
 				(authrequest.getUsername()+" registered Successfully "), HttpStatus.OK);
@@ -75,8 +84,17 @@ public class AuthController {
 		
 		String jwt = jwtutil.generateToken(userdetails);
 		
+		//logger implementation
+        logger.info("[authenticate] info message added");
+        logger.debug("[authenticate] debug message added");
+        
 		return ResponseEntity.ok(new AuthenticationResponse(jwt));
 	}
+	
+	
+	
+	
+
 	
 	
 	

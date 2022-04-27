@@ -1,0 +1,8 @@
+spring.data.mongodb.uri= mongodb+srv://Sanket:123@cluster0.kb9lz.mongodb.net/admindb?retryWrites=true&w=majority
+
+server.port=8088
+spring.application.name=AdminDetails
+
+cors.origins = *
+
+spring.mvc.pathmatch.matching-strategy=ant-path-matcher

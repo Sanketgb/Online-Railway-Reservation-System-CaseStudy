@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.casestudy.model.TrainModel;
 
-
 @Repository
 public interface TrainRepository extends MongoRepository<TrainModel, String> {
 
@@ -16,6 +15,5 @@ public interface TrainRepository extends MongoRepository<TrainModel, String> {
 	TrainModel findByTrainName(String trainName);
 
 	Optional<TrainModel> findByTrainNo(String trainNo);
-
 	
 }
