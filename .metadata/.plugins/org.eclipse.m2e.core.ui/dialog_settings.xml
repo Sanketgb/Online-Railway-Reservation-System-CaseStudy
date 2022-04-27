@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\Hp\Desktop\Online Railway Reservation System CaseStudy\Admin"/>
+			<item value="C:\Users\Hp\Desktop\Online Railway Reservation System CaseStudy\Backend"/>
 			<item value="C:\Users\Hp\Desktop\Online Railway Reservation System\Backend"/>
 		</list>
 		<list key="projectNameTemplate">

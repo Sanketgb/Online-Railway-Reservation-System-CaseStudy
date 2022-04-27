@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.casestudy.repository.AdminRepository"/>
+    <fullyQualifiedTypeName name="com.casestudy.model.AdminModel"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.web.filter.OncePerRequestFilter"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.context.SecurityContextHolder"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetails"/>
+    <fullyQualifiedTypeName name="org.springframework.security.authentication.UsernamePasswordAuthenticationToken"/>
+    <fullyQualifiedTypeName name="org.springframework.security.web.authentication.WebAuthenticationDetailsSource"/>
+    <fullyQualifiedTypeName name="com.casestudy.repository.BookingRepository"/>
     <fullyQualifiedTypeName name="com.casestudy.repository.TrainRepository"/>
     <fullyQualifiedTypeName name="com.casestudy.repository.UserRepository"/>
-    <fullyQualifiedTypeName name="com.casestudy.model.UserModel"/>
     <fullyQualifiedTypeName name="com.casestudy.model.TrainModel"/>
-    <fullyQualifiedTypeName name="com.casestudy.repository.AdminRepository"/>
-    <fullyQualifiedTypeName name="com.casestudy.service.UserInfoService"/>
+    <fullyQualifiedTypeName name="com.casestudy.model.BookingModel"/>
     <fullyQualifiedTypeName name="com.casestudy.service.JwtUtil"/>
     <fullyQualifiedTypeName name="com.casestudy.model.AuthenticationResponse"/>
-    <fullyQualifiedTypeName name="com.casestudy.model.AdminModel"/>
+    <fullyQualifiedTypeName name="com.casestudy.model.UserModel"/>
     <fullyQualifiedTypeName name="com.casestudy.model.AuthenticationRequest"/>
+    <fullyQualifiedTypeName name="com.casestudy.service.JwtRequestFilter"/>
+    <fullyQualifiedTypeName name="com.casestudy.service.UserInfoService"/>
 </qualifiedTypeNameHistroy>
